@@ -1,4 +1,4 @@
-public abstract class CreditCard {
+public abstract class CreditCard implements InterestCalculator {
     protected double interestRate;
     protected double balance = 0;
 
