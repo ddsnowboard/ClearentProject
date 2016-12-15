@@ -10,11 +10,11 @@ public class UnitTest extends TestCase {
         Discover discover = new Discover();
         discover.setBalance(100);
         Wallet wallet = new Wallet();
-        wallet.add(visa);
-        wallet.add(masterCard);
-        wallet.add(discover);
+        wallet.addCard(visa);
+        wallet.addCard(masterCard);
+        wallet.addCard(discover);
         Person person = new Person();
-        person.add(wallet);
+        person.addWallet(wallet);
 
         assertEquals(16.0, person.calculateInterest());
 
@@ -30,17 +30,17 @@ public class UnitTest extends TestCase {
         visa.setBalance(100);
         Discover discover = new Discover();
         discover.setBalance(100);
-        wallet1.add(visa);
-        wallet1.add(discover);
+        wallet1.addCard(visa);
+        wallet1.addCard(discover);
 
         Wallet wallet2 = new Wallet();
         MasterCard masterCard = new MasterCard();
         masterCard.setBalance(100);
-        wallet2.add(masterCard);
+        wallet2.addCard(masterCard);
 
         Person person = new Person();
-        person.add(wallet1);
-        person.add(wallet2);
+        person.addWallet(wallet1);
+        person.addWallet(wallet2);
 
 
         assertEquals(16.0, person.calculateInterest());
@@ -54,19 +54,19 @@ public class UnitTest extends TestCase {
     {
         Person p1 = new Person();
         Wallet wallet1 = new Wallet();
-        p1.add(wallet1);
+        p1.addWallet(wallet1);
 
         Visa visa1 = new Visa();
         visa1.setBalance(100);
-        wallet1.add(visa1);
+        wallet1.addCard(visa1);
 
         MasterCard masterCard1 = new MasterCard();
         masterCard1.setBalance(100);
-        wallet1.add(masterCard1);
+        wallet1.addCard(masterCard1);
 
         Discover discover1 = new Discover();
         discover1.setBalance(100);
-        wallet1.add(discover1);
+        wallet1.addCard(discover1);
         
         assertEquals(16.0, wallet1.calculateInterest());
         assertEquals(16.0, p1.calculateInterest());
@@ -76,15 +76,15 @@ public class UnitTest extends TestCase {
 
         Person p2 = new Person();
         Wallet wallet2 = new Wallet();
-        p2.add(wallet2);
+        p2.addWallet(wallet2);
 
         Visa visa2 = new Visa();
         visa2.setBalance(100);
-        wallet2.add(visa2);
+        wallet2.addCard(visa2);
 
         MasterCard masterCard2 = new MasterCard();
         masterCard2.setBalance(100);
-        wallet2.add(masterCard2);
+        wallet2.addCard(masterCard2);
         assertEquals(15.0, wallet2.calculateInterest());
         assertEquals(15.0, p2.calculateInterest());
 
